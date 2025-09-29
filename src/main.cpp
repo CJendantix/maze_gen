@@ -12,7 +12,7 @@ int main() {
         const auto& cell = grid.get_cell(x, 0).value().get();
         std::cout << (cell.north ? "_ " : "  ");
     }
-    std::cout << "\n";
+    std::cout << std::endl;
 
     for (int y = 0; y < HEIGHT; y++) {
         std::cout << (grid.get_cell(0, y).value().get().west ? '|' : ' ');
