@@ -15,7 +15,7 @@ int main() {
     std::cout << "\n";
 
     for (int y = 0; y < HEIGHT; y++) {
-        std::cout << "|"; // Left border
+        std::cout << (grid.get_cell(0, y).value().get().west ? '|' : ' ');
         for (int x = 0; x < WIDTH; x++) {
             const auto& cell = grid.get_cell(x, y).value().get();
     
@@ -24,7 +24,7 @@ int main() {
     
             std::cout << floor << wall;
         }
-        std::cout << "\n";
+        std::cout << std::endl;
     }
 
     return 0;
