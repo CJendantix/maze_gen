@@ -1,0 +1,10 @@
+# ninja log v7
+2	22	1758898674529452579	/Users/cgilroy29/CS/maze_gen/build/CMakeFiles/cmake.verify_globs	9abf8053d17c7f81
+24	1398	1758898674550960558	CMakeFiles/MAZEGEN.dir/src/main.cpp.o	1e2c4f8b18ff6968
+1400	1511	1758898675927417384	MAZEGEN	ff43a103beb8b4a
+3	17	1758898681410984998	/Users/cgilroy29/CS/maze_gen/build/CMakeFiles/cmake.verify_globs	9abf8053d17c7f81
+20	965	1758898681427834681	CMakeFiles/MAZEGEN.dir/src/main.cpp.o	1e2c4f8b18ff6968
+966	1086	1758898682373785258	MAZEGEN	ff43a103beb8b4a
+4	17	1758898700560176898	/Users/cgilroy29/CS/maze_gen/build/CMakeFiles/cmake.verify_globs	9abf8053d17c7f81
+21	676	1758898700577355206	CMakeFiles/MAZEGEN.dir/src/main.cpp.o	1e2c4f8b18ff6968
+676	760	1758898701232398753	MAZEGEN	ff43a103beb8b4a

@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/Users/cgilroy29/CS/maze_gen/build",
+  "command": "/usr/bin/c++  -I/Users/cgilroy29/CS/maze_gen/src -g -std=c++20 -arch arm64 -o CMakeFiles/MAZEGEN.dir/src/main.cpp.o -c /Users/cgilroy29/CS/maze_gen/src/main.cpp",
+  "file": "/Users/cgilroy29/CS/maze_gen/src/main.cpp",
+  "output": "CMakeFiles/MAZEGEN.dir/src/main.cpp.o"
+}
+]
