@@ -1,23 +1,25 @@
 #include <iostream>
-#include "grid.hpp"
+#include "maze_gen.hpp"
 
-const int WIDTH = 12;
-const int HEIGHT = 12;
+constexpr int WIDTH = 12;
+constexpr int HEIGHT = 12;
 
 int main() {
-    Grid<WIDTH, HEIGHT> grid;
+    grid::Grid grid(WIDTH, HEIGHT);
+    maze_gen::MazeGenerator gen(grid);
+    gen.generate_maze();
 
     std::cout << " ";
     for (int x = 0; x < WIDTH; x++) {
-        const auto& cell = grid.get_cell(x, 0).value().get();
+        const auto& cell = grid.get_cell({x, 0}).value().get();
         std::cout << (cell.north ? "_ " : "  ");
     }
     std::cout << std::endl;
 
     for (int y = 0; y < HEIGHT; y++) {
-        std::cout << (grid.get_cell(0, y).value().get().west ? '|' : ' ');
+        std::cout << (grid.get_cell({0, y}).value().get().west ? '|' : ' ');
         for (int x = 0; x < WIDTH; x++) {
-            const auto& cell = grid.get_cell(x, y).value().get();
+            const auto& cell = grid.get_cell({x, y}).value().get();
     
             char floor = cell.south ? '_' : ' ';
             char wall = cell.east ? '|' : ' ';
