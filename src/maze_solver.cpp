@@ -76,13 +76,13 @@ std::unordered_set<grid::Coordinate> MazeSolver::solve_maze()
                 continue;
             }
 
-            if (!data.contains(neighbor)) {
-                data.insert_or_assign(neighbor, Cost{INT_MAX, 0, INT_MAX, std::nullopt});
-            }
-
             int tentative_g = data.at(current).cost + 1;
 
             if (!open_set.contains(neighbor)) {
+                if (!data.contains(neighbor)) {
+                    data.insert_or_assign(neighbor, Cost{INT_MAX, 0, INT_MAX, std::nullopt});
+                }
+                
                 open_set.push(neighbor);
             } else {
                 continue;
