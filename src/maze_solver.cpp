@@ -76,7 +76,6 @@ std::unordered_set<grid::Coordinate> MazeSolver::solve_maze()
                 continue;
             }
 
-            // Ensure the neighbor exists in the data map
             if (!data.contains(neighbor)) {
                 data.insert_or_assign(neighbor, Cost{INT_MAX, 0, INT_MAX, std::nullopt});
             }
@@ -85,7 +84,7 @@ std::unordered_set<grid::Coordinate> MazeSolver::solve_maze()
 
             if (!open_set.contains(neighbor)) {
                 open_set.push(neighbor);
-            } else if (tentative_g >= data.at(neighbor).cost) {
+            } else {
                 continue;
             }
 
