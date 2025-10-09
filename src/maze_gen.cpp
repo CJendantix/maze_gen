@@ -37,12 +37,14 @@ void MazeGenerator::carve_passage(Coordinate current) {
     }
 }
 
-void MazeGenerator::generate_maze() {
+std::array<Coordinate, 2> MazeGenerator::generate_maze() {
     using enum Direction;
     carve_passage({0, 0});
 
     std::array<Direction, 4> walls = {NORTH, SOUTH, EAST, WEST};
     std::ranges::shuffle(walls, gen);
+
+    std::array<Coordinate, 2> ret;
 
     for (int i = 0; i < 2; i++) {
         auto wall = walls[i];
@@ -56,21 +58,27 @@ void MazeGenerator::generate_maze() {
         }
 
         std::uniform_int_distribution length_dist(0, length - 1);
-        int coord = length_dist(gen);
+        int distance = length_dist(gen);
 
+        Coordinate coord;
         switch (wall) {
             case NORTH:
-                get_cell({coord, 0}).remove_wall(NORTH);
+                coord = {distance, 0};
                 break;
             case SOUTH:
-                get_cell({coord, height - 1}).remove_wall(SOUTH);
+                coord = {distance, height - 1};
                 break;
             case EAST:
-                get_cell({width - 1, coord}).remove_wall(EAST);
+                coord = {width - 1, distance};
                 break;
             case WEST:
-                get_cell({0, coord}).remove_wall(WEST);
+                coord = {0, distance};
                 break;
         }
+
+        get_cell(coord).remove_wall(wall);
+        ret[i] = coord;
     }
+
+    return ret;
 }

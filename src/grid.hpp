@@ -1,3 +1,5 @@
+#pragma once
+
 #include <vector>
 #include <optional>
 
@@ -19,14 +21,10 @@ namespace grid {
     constexpr Direction opposite(Direction direction) {
         using enum Direction;
         switch (direction) {
-            case NORTH:
-                return SOUTH;
-            case SOUTH:
-                return NORTH;
-            case EAST:
-                return WEST;
-            case WEST:
-                return EAST;
+            case NORTH: return SOUTH;
+            case SOUTH: return NORTH;
+            case EAST:  return WEST;
+            case WEST:  return EAST;
         }
     }
 
@@ -53,6 +51,7 @@ namespace grid {
     private:
         int width;
         int height;
+
         std::vector<std::vector<Cell>> grid;
 
     public:

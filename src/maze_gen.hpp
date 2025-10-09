@@ -1,7 +1,9 @@
+#pragma once
+
 #include <random>
 #include <unordered_set>
+#include <tuple>
 #include "grid.hpp"
-
 
 namespace maze_gen {
     class MazeGenerator {
@@ -20,6 +22,6 @@ namespace maze_gen {
     public:
         explicit MazeGenerator(grid::Grid& grid);
 
-        void generate_maze();
+        std::array<grid::Coordinate, 2> generate_maze();
     };
 }
