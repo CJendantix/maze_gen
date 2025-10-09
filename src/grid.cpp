@@ -19,9 +19,6 @@ void Cell::remove_wall(Direction direction) {
     }
 }
 
-int Grid::get_width() const { return width; }
-int Grid::get_height() const { return height; }
-
 std::optional<std::reference_wrapper<Cell>> Grid::get_cell(Coordinate coord) {
     if (coord.x < 0 || coord.x >= width || coord.y < 0 || coord.y >= height)
         return std::nullopt;

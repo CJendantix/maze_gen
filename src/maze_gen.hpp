@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MAZE_GEN_HPP
+#define MAZE_GEN_HPP
 
 #include <random>
 #include <unordered_set>
@@ -25,3 +26,5 @@ namespace maze_gen {
         std::array<grid::Coordinate, 2> generate_maze();
     };
 }
+
+#endif // MAZE_SOLVER_HPP

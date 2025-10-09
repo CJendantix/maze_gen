@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MAZE_SOLVER_HPP
+#define MAZE_SOLVER_HPP
 
 #include <random>
 #include <unordered_set>
@@ -72,3 +73,5 @@ namespace maze_solver {
         std::unordered_set<grid::Coordinate> solve_maze();
     };
 }
+
+#endif // MAZE_SOLVER_HPP

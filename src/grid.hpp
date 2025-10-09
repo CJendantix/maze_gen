@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GRID_HPP
+#define GRID_HPP
 
 #include <vector>
 #include <optional>
@@ -55,9 +56,12 @@ namespace grid {
         std::vector<std::vector<Cell>> grid;
 
     public:
-        constexpr Grid(int width, int height) : width(width), height(height), grid(width, std::vector<Cell>(height)) {}
-        int get_width() const;
-        int get_height() const;
+        constexpr Grid(int width, int height) 
+            : width(width)
+            , height(height)
+            , grid(width, std::vector<Cell>(height)) {}
+        constexpr int get_width() { return width; }
+        constexpr int get_height() { return height; }
 
         std::optional<std::reference_wrapper<Cell>> get_cell(Coordinate coord);
     };
@@ -71,3 +75,5 @@ namespace std {
         }
     };
 }
+
+#endif // GRID_HPP
