@@ -1,5 +1,6 @@
 #include <iostream>
 #include <optional>
+#include <string_view>
 #include "maze_gen/maze_gen.hpp"
 #include "maze_solver/maze_solver.hpp"
 
@@ -11,9 +12,9 @@ void output(grid::Grid& maze, std::optional<const std::reference_wrapper<std::un
     }
     std::cout << std::endl;
 
-    for (int y = 0; y < maze.get_width(); y++) {
+    for (int y = 0; y < maze.get_height(); y++) {  // Use maze.get_height() for rows
         std::cout << (maze.get_cell({0, y}).value().get().west ? '|' : ' ');
-        for (int x = 0; x < maze.get_height(); x++) {
+        for (int x = 0; x < maze.get_width(); x++) {  // Use maze.get_width() for columns
             const auto& cell = maze.get_cell({x, y}).value().get();
 
             char floor = cell.south ? '_' : ' ';
@@ -51,8 +52,8 @@ int get_valid_size(std::string_view prompt) {
 }
 
 int main() {
-    int width = get_valid_size("Enter maze width (max 200): ");
-    int height = get_valid_size("Enter maze height (max 200): ");
+    int width = get_valid_size(std::string_view("Enter maze width (max 200): "));
+    int height = get_valid_size(std::string_view("Enter maze height (max 200): "));
 
     grid::Grid grid(width, height);
     maze_gen::MazeGenerator gen(grid);
@@ -60,7 +61,7 @@ int main() {
     auto points = gen.generate_maze();
     maze_solver::MazeSolver solver(grid, points[0], points[1]);
     auto solution = solver.solve_maze();
-
+    
     output(grid, std::nullopt);
     output(grid, solution);
 
