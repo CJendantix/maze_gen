@@ -12,9 +12,9 @@ void output(grid::Grid& maze, std::optional<const std::reference_wrapper<std::un
     }
     std::cout << std::endl;
 
-    for (int y = 0; y < maze.get_height(); y++) {  // Use maze.get_height() for rows
+    for (int y = 0; y < maze.get_height(); y++) {
         std::cout << (maze.get_cell({0, y}).value().get().west ? '|' : ' ');
-        for (int x = 0; x < maze.get_width(); x++) {  // Use maze.get_width() for columns
+        for (int x = 0; x < maze.get_width(); x++) {
             const auto& cell = maze.get_cell({x, y}).value().get();
 
             char floor = cell.south ? '_' : ' ';
