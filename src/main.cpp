@@ -1,7 +1,7 @@
 #include <iostream>
 #include <optional>
-#include "maze_gen.hpp"
-#include "maze_solver.hpp"
+#include "maze_gen/maze_gen.hpp"
+#include "maze_solver/maze_solver.hpp"
 
 void output(grid::Grid& maze, std::optional<const std::reference_wrapper<std::unordered_set<grid::Coordinate>>> solution) {
     std::cout << " ";

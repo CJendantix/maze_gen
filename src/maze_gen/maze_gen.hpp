@@ -1,7 +1,7 @@
 #include <random>
 #include <unordered_set>
 #include <tuple>
-#include "grid.hpp"
+#include "../grid/grid.hpp"
 
 #ifndef MAZE_GEN_HPP
 #define MAZE_GEN_HPP

@@ -3,7 +3,7 @@
 #include <unordered_map>
 #include <queue>
 #include <optional>
-#include "grid.hpp"
+#include "../grid/grid.hpp"
 
 #ifndef MAZE_SOLVER_HPP
 #define MAZE_SOLVER_HPP
