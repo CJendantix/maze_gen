@@ -1,6 +1,3 @@
-#ifndef MAZE_SOLVER_HPP
-#define MAZE_SOLVER_HPP
-
 #include <random>
 #include <unordered_set>
 #include <unordered_map>
@@ -8,35 +5,36 @@
 #include <optional>
 #include "grid.hpp"
 
+#ifndef MAZE_SOLVER_HPP
+#define MAZE_SOLVER_HPP
+
 namespace maze_solver {
-    namespace {
-        template<typename type, typename comp>
-        class QueueSet {
-            std::priority_queue<type, std::vector<type>, comp> queue;
-            std::unordered_set<type> set;
-        public:
-            QueueSet(comp comparator) : queue(comparator) {}
-            inline int size() {
-                return queue.size();
-            }
+    template<typename type, typename comp>
+    class QueueSet {
+        std::priority_queue<type, std::vector<type>, comp> queue;
+        std::unordered_set<type> set;
+    public:
+        explicit QueueSet(comp comparator) : queue(comparator) {}
+        inline int size() {
+            return queue.size();
+        }
 
-            inline void push(type obj) {
-                queue.push(obj);
-                set.insert(obj);
-            }
+        inline void push(type obj) {
+            queue.push(obj);
+            set.insert(obj);
+        }
 
-            inline type pop() {
-                type ret = queue.top();
-                queue.pop();
-                set.erase(ret);
-                return ret;
-            }
+        inline type pop() {
+            type ret = queue.top();
+            queue.pop();
+            set.erase(ret);
+            return ret;
+        }
 
-            inline bool contains(type obj) {
-                return set.contains(obj);
-            }
-        };
-    }
+        inline bool contains(type obj) {
+            return set.contains(obj);
+        }
+    };
 
     struct Cost {
         int cost;
@@ -56,8 +54,6 @@ namespace maze_solver {
         grid::Coordinate end;
 
         grid::Cell& get_cell(grid::Coordinate coord);
-
-        int heuristic(grid::Coordinate a, grid::Coordinate b);
 
         std::unordered_map<grid::Coordinate, Cost> data;
 

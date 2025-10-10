@@ -17,7 +17,7 @@ MazeSolver::MazeSolver(Grid& grid, Coordinate start, Coordinate end)
     })
     , open_set(comp) {}
 
-int MazeSolver::heuristic(grid::Coordinate a, grid::Coordinate b)
+int heuristic(grid::Coordinate a, grid::Coordinate b)
 {
     return abs(a.x - b.x) + abs(a.y - b.y);
 }
@@ -56,7 +56,7 @@ std::unordered_set<grid::Coordinate> MazeSolver::solve_maze()
         closed_set.insert(current);
 
         std::vector<grid::Coordinate> neighbors;
-        auto& cell = get_cell(current);
+        auto const& cell = get_cell(current);
 
         std::array<std::pair<grid::Coordinate, bool>, 4> directions = {{
             {{current.x, current.y - 1}, cell.north},
@@ -65,7 +65,7 @@ std::unordered_set<grid::Coordinate> MazeSolver::solve_maze()
             {{current.x - 1, current.y}, cell.west}
         }};
         
-        for (auto& [coord, blocked] : directions) {
+        for (auto const& [coord, blocked] : directions) {
             if (!blocked && maze.get_cell(coord).has_value()) {
                 neighbors.push_back(coord);
             }
@@ -78,15 +78,15 @@ std::unordered_set<grid::Coordinate> MazeSolver::solve_maze()
 
             int tentative_g = data.at(current).cost + 1;
 
-            if (!open_set.contains(neighbor)) {
-                if (!data.contains(neighbor)) {
-                    data.insert_or_assign(neighbor, Cost{INT_MAX, 0, INT_MAX, std::nullopt});
-                }
-                
-                open_set.push(neighbor);
-            } else {
+            if (open_set.contains(neighbor)) {
                 continue;
             }
+
+            if (!data.contains(neighbor)) {
+                data.insert_or_assign(neighbor, Cost{INT_MAX, 0, INT_MAX, std::nullopt});
+            }
+
+            open_set.push(neighbor);
 
             int h = heuristic(neighbor, end);
             data.insert_or_assign(neighbor, Cost{tentative_g, h, tentative_g + h, current});

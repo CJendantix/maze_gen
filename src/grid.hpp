@@ -1,8 +1,8 @@
-#ifndef GRID_HPP
-#define GRID_HPP
-
 #include <vector>
 #include <optional>
+
+#ifndef GRID_HPP
+#define GRID_HPP
 
 namespace grid {
     struct Coordinate {
@@ -56,12 +56,12 @@ namespace grid {
         std::vector<std::vector<Cell>> grid;
 
     public:
-        constexpr Grid(int width, int height) 
+        Grid(int width, int height) 
             : width(width)
             , height(height)
             , grid(width, std::vector<Cell>(height)) {}
-        constexpr int get_width() { return width; }
-        constexpr int get_height() { return height; }
+        int get_width() const { return width; }
+        int get_height() const { return height; }
 
         std::optional<std::reference_wrapper<Cell>> get_cell(Coordinate coord);
     };

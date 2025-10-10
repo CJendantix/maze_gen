@@ -1,10 +1,10 @@
-#ifndef MAZE_GEN_HPP
-#define MAZE_GEN_HPP
-
 #include <random>
 #include <unordered_set>
 #include <tuple>
 #include "grid.hpp"
+
+#ifndef MAZE_GEN_HPP
+#define MAZE_GEN_HPP
 
 namespace maze_gen {
     class MazeGenerator {
